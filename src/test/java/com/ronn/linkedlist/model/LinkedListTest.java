@@ -1,10 +1,8 @@
 package com.ronn.linkedlist.model;
 
-import com.ronn.linkedlist.LinkedList;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LinkedListTest {
 
@@ -20,8 +18,7 @@ public class LinkedListTest {
 
     ll.append("S");
 
-    ll.get()
-//    assertTrue(ll.contains("S"));
+    assertEquals(ll.getLast().getData(), "S");
   }
 
   @Test

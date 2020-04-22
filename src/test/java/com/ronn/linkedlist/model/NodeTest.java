@@ -1,6 +1,5 @@
 package com.ronn.linkedlist.model;
 
-import com.ronn.linkedlist.Node;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
