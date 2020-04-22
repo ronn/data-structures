@@ -17,8 +17,10 @@ public class LinkedListTest {
     LinkedList ll = new LinkedList();
 
     ll.append("S");
-
     assertEquals(ll.getLast().getData(), "S");
+
+    ll.append("J");
+    assertEquals(ll.getLast().getData(), "J");
   }
 
   @Test
@@ -29,5 +31,18 @@ public class LinkedListTest {
 
     ll.append("Something");
     assertTrue(ll.contains("Something"));
+
+    assertFalse(ll.contains("Anything"));
+  }
+
+  @Test
+  public void testPrepend(){
+    LinkedList ll = new LinkedList();
+
+    ll.prepend("Hola");
+    assertEquals("Hola", ll.getHead().getData());
+
+    ll.prepend("Chao");
+    assertEquals("Chao", ll.getHead().getData());
   }
 }
