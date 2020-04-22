@@ -7,6 +7,12 @@ public class LinkedList {
   public LinkedList() {
   }
 
+  public void prepend(Object data){
+    Node newHead = new Node(data);
+    newHead.setNext(this.head);
+    this.head = newHead;
+  }
+
   public void append(Object data){
     Node newNode = new Node(data);
 
@@ -25,6 +31,10 @@ public class LinkedList {
     }
 
     return last;
+  }
+
+  protected Node getHead() {
+    return head;
   }
 
   public boolean contains(Object data){
