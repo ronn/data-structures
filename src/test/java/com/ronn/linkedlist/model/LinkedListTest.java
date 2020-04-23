@@ -8,13 +8,13 @@ public class LinkedListTest {
 
   @Test
   public void testIfEmptiness(){
-    LinkedList ll = new LinkedList();
+    LinkedList<String> ll = new LinkedList<>();
     assertTrue(ll.isEmpty());
   }
 
   @Test
   public void testListCanAppend(){
-    LinkedList ll = new LinkedList();
+    LinkedList<String> ll = new LinkedList<>();
 
     ll.append("S");
     assertEquals(ll.getLast().getData(), "S");
@@ -25,7 +25,7 @@ public class LinkedListTest {
 
   @Test
   public void testContains(){
-    LinkedList ll = new LinkedList();
+    LinkedList<String> ll = new LinkedList<>();
 
     assertFalse(ll.contains("Nothing"));
 
@@ -37,7 +37,7 @@ public class LinkedListTest {
 
   @Test
   public void testPrepend(){
-    LinkedList ll = new LinkedList();
+    LinkedList<String> ll = new LinkedList<>();
 
     ll.prepend("Hola");
     assertEquals("Hola", ll.getHead().getData());

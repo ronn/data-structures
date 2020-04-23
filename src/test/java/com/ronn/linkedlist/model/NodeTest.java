@@ -8,8 +8,8 @@ public class NodeTest {
 
   @Test
   public void testNodeInstantiation(){
-    Node lastNode = new Node("X");
-    Node headNode = new Node("R", lastNode);
+    Node<String> lastNode = new Node<>("X");
+    Node<String> headNode = new Node<>("R", lastNode);
 
     assertEquals("R", headNode.getData());
     assertTrue(headNode.hasNext());
