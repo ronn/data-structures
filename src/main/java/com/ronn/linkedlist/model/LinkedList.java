@@ -1,20 +1,20 @@
 package com.ronn.linkedlist.model;
 
-public class LinkedList {
+public class LinkedList<T> {
 
-  private Node head;
+  private Node<T> head;
 
   public LinkedList() {
   }
 
-  public void prepend(Object data){
-    Node newHead = new Node(data);
+  public void prepend(T data){
+    Node<T> newHead = new Node<>(data);
     newHead.setNext(this.head);
     this.head = newHead;
   }
 
-  public void append(Object data){
-    Node newNode = new Node(data);
+  public void append(T data){
+    Node<T> newNode = new Node<>(data);
 
     if (isEmpty()) {
       this.head = newNode;
@@ -23,8 +23,8 @@ public class LinkedList {
     }
   }
 
-  protected Node getLast(){
-    Node last = this.head;
+  protected Node<T> getLast(){
+    Node<T> last = this.head;
 
     while (last.hasNext()){
       last = last.getNext();
@@ -33,14 +33,14 @@ public class LinkedList {
     return last;
   }
 
-  protected Node getHead() {
+  protected Node<T> getHead() {
     return head;
   }
 
-  public boolean contains(Object data){
+  public boolean contains(T data){
     if (isEmpty()) return false;
 
-    Node actual = this.head;
+    Node<T> actual = this.head;
 
     do {
       if (data.equals(actual.getData())){

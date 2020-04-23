@@ -1,28 +1,28 @@
 package com.ronn.linkedlist.model;
 
-public class Node {
+class Node<T> {
 
-  private final Object data;
-  private Node next;
+  private final T data;
+  private Node<T> next;
 
-  public Node(Object data, Node next) {
+  public Node(T data, Node<T> next) {
     this.data = data;
     this.next = next;
   }
 
-  public Node(Object data) {
+  public Node(T data) {
     this.data = data;
   }
 
-  public Object getData() {
+  public T getData() {
     return data;
   }
 
-  public Node getNext() {
+  public Node<T> getNext() {
     return next;
   }
 
-  public void setNext(Node next) {
+  public void setNext(Node<T> next) {
     this.next = next;
   }
 
