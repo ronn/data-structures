@@ -1,5 +1,7 @@
 package com.ronn.linkedlist.model;
 
+import com.ronn.common.model.Node;
+
 public class LinkedList<T> {
 
   private Node<T> head;

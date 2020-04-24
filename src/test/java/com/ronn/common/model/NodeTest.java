@@ -1,4 +1,4 @@
-package com.ronn.linkedlist.model;
+package com.ronn.common.model;
 
 import org.junit.Test;
 
