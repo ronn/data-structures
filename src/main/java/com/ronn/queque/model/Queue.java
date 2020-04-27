@@ -2,20 +2,20 @@ package com.ronn.queque.model;
 
 import com.ronn.common.model.Node;
 
-public class Queue {
+public class Queue<T> {
 
   public Queue() {
   }
 
-  private Node<String> first;
-  private Node<String> last;
+  private Node<T> first;
+  private Node<T> last;
 
-  public String peek() {
+  public T peek() {
     return null != this.first ? this.first.getData(): null;
   }
 
-  public void enqueue(String data){
-    Node<String> newNode = new Node<>(data);
+  public void enqueue(T data){
+    Node<T> newNode = new Node<>(data);
 
     if (isEmpty()){
       this.first = newNode;
@@ -28,14 +28,14 @@ public class Queue {
 
   public void dequeue(){
     if (!isEmpty()){
-      Node<String> second = first.getNext();
+      Node<T> second = first.getNext();
       first.setNext(null);
       first = second;
     }
   }
 
-  public String dispatch(){
-    String data = this.peek();
+  public T dispatch(){
+    T data = this.peek();
     this.dequeue();
 
     return data;
