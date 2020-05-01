@@ -1,35 +1,29 @@
 package com.ronn.model;
 
-import com.ronn.common.model.Node;
+import com.ronn.stack.model.Stack;
+import org.junit.Test;
 
-public class StackTest<T> {
+import static org.junit.Assert.*;
 
-  private Node<T> head = null;
-  public int size = 0;
+public class StackTest {
 
-  public void push(T obj){
-    Node<T> newHead = new Node<>(obj);
+  @Test
+  public void checkAllOpsWork(){
+    Stack<String> myStack = new Stack<>();
+    assertTrue(myStack.isEmpty());
 
-    newHead.setNext(head);
-    head = newHead;
-    size ++;
-  }
+    myStack.push("Hola");
+    assertFalse(myStack.isEmpty());
+    assertEquals("Hola", myStack.peek());
 
-  public T peek(){
-    return isEmpty() ? null : head.getData();
-  }
+    myStack.push("Adiós");
+    assertEquals("Adiós", myStack.peek());
+    assertEquals(2, myStack.size);
 
-  public void pop(){
-    if (!isEmpty()){
-      Node<T> toRemove = this.head;
-      head = head.getNext();
-      toRemove.setNext(null);
+    myStack.pop();
+    assertEquals("Hola", myStack.peek());
 
-      size --;
-    }
-  }
-
-  public Boolean isEmpty(){
-    return head == null;
+    myStack.pop();
+    assertTrue(myStack.isEmpty());
   }
 }
