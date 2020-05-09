@@ -43,6 +43,9 @@ public class QueueTest {
 
   @Test
   public void canDispatch(){
+    q = new Queue<>();
+    q.enqueue("Hola");
+
     String first = q.dispatch();
 
     assertNotSame(q.peek(), first);
