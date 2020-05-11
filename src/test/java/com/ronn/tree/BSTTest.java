@@ -99,7 +99,7 @@ public class BSTTest {
   private BinarySearchTree getBinarySearchTree() {
     BinarySearchTree bst = new BinarySearchTree();
 
-    Arrays.asList(5, 4, 7, 6, 3, 2, 8, 9, 10, 1)
+    Arrays.asList(5, 4, 7, 6, 2, 3, 8, 9, 10, 1)
         .forEach(bst::insert);
 
     return bst;
@@ -112,5 +112,42 @@ public class BSTTest {
     assertEquals(10, bst.getMax().intValue());
 
     assertEquals(4, bst.getLeft().getMax().intValue());
+  }
+
+  @Test
+  public void checkRemoveLeaf(){
+    BinarySearchTree bst = getBinarySearchTree();
+
+    assertEquals(1, bst.get(1).intValue());
+    assertEquals(6, bst.get(6).intValue());
+
+    bst.remove(1);
+    bst.remove(6);
+
+    assertNull(bst.get(1));
+    assertNull(bst.get(6));
+  }
+
+  @Test
+  public void checkRemove1ChildsParent(){
+    BinarySearchTree bst = getBinarySearchTree();
+
+    assertEquals(2, bst.get(2).intValue());
+
+    bst.remove(2);
+    Integer secondGet = bst.get(2);
+
+    assertNull(secondGet);
+  }
+
+  @Test
+  public void checkRemove2ChildsParent(){
+    BinarySearchTree bst = getBinarySearchTree();
+
+    assertEquals(2, bst.get(2).intValue());
+
+    bst.remove(2);
+    Integer secondGet = bst.get(2);
+    assertNull(secondGet);
   }
 }
