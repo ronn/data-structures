@@ -3,7 +3,7 @@ package com.ronn.tree;
 public class BinarySearchTree implements IBST<Integer> {
 
   private Integer data;
-  private BinarySearchTree left, right;
+  private BinarySearchTree left, right, parent;
 
   @Override
   public Boolean isLeaf() {
@@ -30,11 +30,15 @@ public class BinarySearchTree implements IBST<Integer> {
         if (left == null){
           left = new BinarySearchTree();
         }
+
+        left.setParent(this);
         left.insert(newData);
       } else {
         if (right == null){
           right = new BinarySearchTree();
         }
+
+        right.setParent(this);
         right.insert(newData);
       }
     }
@@ -110,15 +114,50 @@ public class BinarySearchTree implements IBST<Integer> {
 
   @Override
   public void remove(Integer id) {
+    if (!isEmpty()){
+      if (data.equals(id)){
+        removeImpl(id);
+      } else if (id < data && left != null){
+          left.remove(id);
+        } else if (right != null){
+          right.remove(id);
+        }
+      }
+  }
 
+  private void removeImpl(Integer id){
+    if (isLeaf()){
+      if (parent != null){
+        if (this == parent.left){
+          parent.left = null;
+        } else {
+          parent.right = null;
+        }
+
+        parent = null;
+        data = null;
+      }
+    } else {
+      if (this == parent.left){
+        if (left != null){
+          parent.left = left;
+        } else {
+          parent.left = right;
+        }
+      } else {
+        if (left != null){
+          parent.right = left;
+        } else {
+          parent.right = right;
+        }
+      }
+    }
   }
 
   public Integer getMax(){
-    if (right != null ){
-      return right.getMax();
-    }
-
-    return data;
+    return right != null
+        ? right.getMax()
+        : data;
   }
 
   public BinarySearchTree getLeft() {
@@ -129,7 +168,11 @@ public class BinarySearchTree implements IBST<Integer> {
     return right;
   }
 
-  public Integer getData() {
-    return data;
+  public BinarySearchTree getParent() {
+    return parent;
+  }
+
+  public void setParent(BinarySearchTree parent) {
+    this.parent = parent;
   }
 }
