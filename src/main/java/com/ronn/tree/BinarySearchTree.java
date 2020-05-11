@@ -21,8 +21,10 @@ public class BinarySearchTree implements IBST<Integer> {
   public void insert(Integer newData) {
     if (isEmpty()){
       this.data = newData;
-    } else {//TODO check duplicate
-      if(newData.equals(this.data) ) throw new RuntimeException("Duplicados ni por el potas");
+    } else {
+      if(newData.equals(this.data) ) {
+        throw new RuntimeException("Duplicados ni por el putas");
+      }
 
       if (newData < data){
         if (left == null){
@@ -62,17 +64,48 @@ public class BinarySearchTree implements IBST<Integer> {
 
   @Override
   public void preorder() {
+    if (isEmpty()) return;
 
+    System.out.println(data);
+
+    if (left != null) {
+      left.preorder();
+    }
+
+
+    if (right != null) {
+      right.preorder();
+    }
   }
 
   @Override
   public void inorder() {
+    if (isEmpty()) return;
 
+    if (left != null) {
+      left.inorder();
+    }
+
+    System.out.println(data);
+
+    if (right != null) {
+      right.inorder();
+    }
   }
 
   @Override
   public void postorder() {
+    if (isEmpty()) return;
 
+    if (right != null) {
+      right.postorder();
+    }
+
+    if (left != null) {
+      left.postorder();
+    }
+
+    System.out.println(data);
   }
 
   @Override
