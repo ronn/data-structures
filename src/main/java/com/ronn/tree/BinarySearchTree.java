@@ -113,6 +113,13 @@ public class BinarySearchTree implements IBST<Integer> {
 
   }
 
+  public Integer getMax(){
+    if (right != null ){
+      return right.getMax();
+    }
+
+    return data;
+  }
 
   public BinarySearchTree getLeft() {
     return left;
@@ -120,5 +127,9 @@ public class BinarySearchTree implements IBST<Integer> {
 
   public BinarySearchTree getRight() {
     return right;
+  }
+
+  public Integer getData() {
+    return data;
   }
 }
