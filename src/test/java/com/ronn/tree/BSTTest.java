@@ -2,6 +2,8 @@ package com.ronn.tree;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class BSTTest {
@@ -65,5 +67,41 @@ public class BSTTest {
 
     assertNotNull(binarySearchTree.get(1));
     assertNotNull(binarySearchTree.get(5));
+  }
+
+  @Test
+  public void checkPreorder(){
+    BinarySearchTree binarySearchTree = new BinarySearchTree();
+    binarySearchTree.preorder();
+
+    BinarySearchTree bst = getBinarySearchTree();
+    bst.preorder();
+  }
+
+  @Test
+  public void checkInorder(){
+    BinarySearchTree binarySearchTree = new BinarySearchTree();
+    binarySearchTree.inorder();
+
+    BinarySearchTree bst = getBinarySearchTree();
+    bst.inorder();
+  }
+
+  @Test
+  public void checkPostorder(){
+    BinarySearchTree binarySearchTree = new BinarySearchTree();
+    binarySearchTree.postorder();
+
+    BinarySearchTree bst = getBinarySearchTree();
+    bst.postorder();
+  }
+
+  private BinarySearchTree getBinarySearchTree() {
+    BinarySearchTree bst = new BinarySearchTree();
+
+    Arrays.asList(5, 4, 7, 6, 3, 2, 8, 9, 10, 1)
+        .forEach(bst::insert);
+
+    return bst;
   }
 }
