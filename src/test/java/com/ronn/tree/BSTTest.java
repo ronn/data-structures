@@ -104,4 +104,13 @@ public class BSTTest {
 
     return bst;
   }
+
+  @Test
+  public void checkMaxValue(){
+    BinarySearchTree bst = getBinarySearchTree();
+
+    assertEquals(10, bst.getMax().intValue());
+
+    assertEquals(4, bst.getLeft().getMax().intValue());
+  }
 }
