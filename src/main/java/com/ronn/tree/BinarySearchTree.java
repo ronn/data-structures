@@ -116,7 +116,7 @@ public class BinarySearchTree implements IBST<Integer> {
   public void remove(Integer id) {
     if (!isEmpty()){
       if (data.equals(id)){
-        removeImpl(id);
+        removeImpl();
       } else if (id < data && left != null){
           left.remove(id);
         } else if (right != null){
@@ -125,7 +125,7 @@ public class BinarySearchTree implements IBST<Integer> {
       }
   }
 
-  private void removeImpl(Integer id){
+  private void removeImpl(){
     if (isLeaf()){
       if (parent != null){
         if (this == parent.left){
@@ -135,25 +135,21 @@ public class BinarySearchTree implements IBST<Integer> {
         }
 
         parent = null;
-        data = null;
       }
+
+      data = null;
     } else {
       if (left != null && right != null){
-        System.out.println( data + " Tiene ambos hijos :): " + right.data + left.data);
+        data = left.getMax();
+        left.remove(data);
       } else {
-        if (this == parent.left){
-          if (left != null){
-            parent.left = left;
-          } else {
-            parent.left = right;
-          }
-        } else {
-          if (left != null){
-            parent.right = left;
-          } else {
-            parent.right = right;
-          }
-        }
+        BinarySearchTree substitute = null != left
+            ? left
+            : right;
+
+        data = substitute.data;
+        left = substitute.left;
+        right = substitute.right;
       }
     }
   }
