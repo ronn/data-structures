@@ -1,10 +1,10 @@
 package com.ronn.tree;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BSTTest {
 
@@ -28,6 +28,20 @@ public class BSTTest {
 
     assertFalse(bst.getLeft().isEmpty());
     assertTrue(bst.getLeft().isLeaf());
+  }
+
+  @Test
+  public void checkInsertingDuplicateThrowsRuntimeException() {
+    BinarySearchTree bst = new BinarySearchTree();
+
+    bst.insert(2);
+
+    Exception exception = assertThrows(RuntimeException.class, () -> bst.insert(2));
+
+    String expectedMessage = "Duplicados ni por el putas";
+    String actualMessage = exception.getMessage();
+
+    assertTrue(actualMessage.contains(expectedMessage));
   }
 
   @Test
@@ -119,13 +133,13 @@ public class BSTTest {
     BinarySearchTree bst = getBinarySearchTree();
 
     assertEquals(1, bst.get(1).intValue());
-    assertEquals(6, bst.get(6).intValue());
+    assertEquals(10, bst.get(10).intValue());
 
     bst.remove(1);
-    bst.remove(6);
+    bst.remove(10);
 
     assertNull(bst.get(1));
-    assertNull(bst.get(6));
+    assertNull(bst.get(10));
   }
 
   @Test
@@ -133,21 +147,27 @@ public class BSTTest {
     BinarySearchTree bst = getBinarySearchTree();
 
     assertEquals(4, bst.get(4).intValue());
+    assertEquals(3, bst.get(3).intValue());
+    assertEquals(8, bst.get(8).intValue());
 
     bst.remove(4);
-    Integer secondGet = bst.get(4);
+    bst.remove(8);
+    bst.remove(3);
 
-    assertNull(secondGet);
+    assertNull(bst.get(4));
+    assertNull(bst.get(3));
+    assertNull(bst.get(8));
   }
 
   @Test
   public void checkRemove2ChildsParent(){
     BinarySearchTree bst = getBinarySearchTree();
 
-    assertEquals(2, bst.get(2).intValue());
+    assertEquals(5, bst.get(5).intValue());
 
-    bst.remove(2);
-    Integer secondGet = bst.get(2);
-    assertNull(secondGet);
+    bst.remove(5);
+    assertNull(bst.get(5));
+
+    bst.preorder();
   }
 }
