@@ -138,17 +138,21 @@ public class BinarySearchTree implements IBST<Integer> {
         data = null;
       }
     } else {
-      if (this == parent.left){
-        if (left != null){
-          parent.left = left;
-        } else {
-          parent.left = right;
-        }
+      if (left != null && right != null){
+        System.out.println( data + " Tiene ambos hijos :): " + right.data + left.data);
       } else {
-        if (left != null){
-          parent.right = left;
+        if (this == parent.left){
+          if (left != null){
+            parent.left = left;
+          } else {
+            parent.left = right;
+          }
         } else {
-          parent.right = right;
+          if (left != null){
+            parent.right = left;
+          } else {
+            parent.right = right;
+          }
         }
       }
     }
@@ -166,10 +170,6 @@ public class BinarySearchTree implements IBST<Integer> {
 
   public BinarySearchTree getRight() {
     return right;
-  }
-
-  public BinarySearchTree getParent() {
-    return parent;
   }
 
   public void setParent(BinarySearchTree parent) {

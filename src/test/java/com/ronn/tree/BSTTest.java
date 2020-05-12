@@ -132,10 +132,10 @@ public class BSTTest {
   public void checkRemove1ChildsParent(){
     BinarySearchTree bst = getBinarySearchTree();
 
-    assertEquals(2, bst.get(2).intValue());
+    assertEquals(4, bst.get(4).intValue());
 
-    bst.remove(2);
-    Integer secondGet = bst.get(2);
+    bst.remove(4);
+    Integer secondGet = bst.get(4);
 
     assertNull(secondGet);
   }
